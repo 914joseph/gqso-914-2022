@@ -6,4 +6,5 @@ Autores/as:
 
 * Bianca Layany
 * Emylle Victória
-* Josen
+* Josenilton Ferreira
+* Thayná Ingrid
