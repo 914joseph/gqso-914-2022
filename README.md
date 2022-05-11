@@ -4,5 +4,6 @@ Este repositório contém o código da API calculadora. Disciplina GQSO, ano 202
 
 Autores/as:
 
-*Bianca Layany
-*Emylle Victória
+* Bianca Layany
+* Emylle Victória
+* Josen
