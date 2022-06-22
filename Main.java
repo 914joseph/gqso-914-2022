@@ -9,7 +9,8 @@ public class Main {
 
         HttpServer servidor = HttpServer.create(endereco, 10);
         servidor.createContext("/", new IndexHandler());
-        servidor.createContext("/ehchatinho", new TuQueEh());
+        //servidor.createContext("/ehchatinho", new TuQueEh());
+        servidor.createContext("/divisao", new Divisao());
         servidor.start();
 
 
