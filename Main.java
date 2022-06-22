@@ -9,6 +9,7 @@ public class Main{
         HttpServer servidor = HttpServer.create(endereco, 10);
       
         servidor.createContext("/", new IndexHandler());
+        servidor.createContext("/soma", new Soma());
         servidor.createContext("/subtracao", new Subtracao());
         servidor.createContext("/multiplicacao", new Multiplicacao());
         servidor.createContext("/divisao", new Divisao());
