@@ -7,10 +7,12 @@ public class Main{
         
         InetSocketAddress endereco = new InetSocketAddress(8889);
         HttpServer servidor = HttpServer.create(endereco, 10);
+      
         servidor.createContext("/", new IndexHandler());
+        servidor.createContext("/subtracao", new Subtracao());
         servidor.createContext("/multiplicacao", new Multiplicacao());
         servidor.createContext("/divisao", new Divisao());
-     
+    
         servidor.start();
 
         System.out.println("Servidor outro iniciado em "+ endereco.getPort());
