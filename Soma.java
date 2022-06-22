@@ -21,7 +21,7 @@ import com.sun.net.httpserver.HttpHandler;
                  exchange.sendResponseHeaders(200, resposta.length);
                  exchange.getResponseBody().write(resposta);
                  return;
-                //coment
+                //comento
 
                 
             }catch (Exception e){
