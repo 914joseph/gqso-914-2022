@@ -6,17 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch OutroMain",
+            "name": "Launch Main",
             "request": "launch",
-            "mainClass": "OutroMain",
+            "mainClass": "Main",
             "projectName": "gqso-914-2022_73c0682d"
-        },
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
         }
     ]
 }
