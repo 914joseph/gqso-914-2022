@@ -8,8 +8,7 @@ public class Main {
         InetSocketAddress endereco = new InetSocketAddress(8888);
 
         HttpServer servidor = HttpServer.create(endereco, 10);
-        servidor.createContext("/", new IndexHandler());
-        servidor.createContext("/ehchatinho", new TuQueEh());
+        servidor.createContext("/subtracao", new Subtracao());
         servidor.start();
 
 
