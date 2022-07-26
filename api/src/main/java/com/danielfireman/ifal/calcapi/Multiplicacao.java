@@ -10,6 +10,7 @@ public class Multiplicacao {
     public double calculaMultiplicacao(@PathParam String op, @PathParam String ob) {
         float operacao = (Float.parseFloat(op) * Float.parseFloat(ob));
         
+        
         try {
           return operacao;
         } catch (NumberFormatException nfe) {
