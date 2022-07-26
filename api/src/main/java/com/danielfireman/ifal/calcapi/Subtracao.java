@@ -3,12 +3,12 @@ package com.danielfireman.ifal.calcapi;
 import io.jooby.annotations.*;
 import io.jooby.exception.BadRequestException;
 
-@Path("/soma/{op}/{ob}")
-public class Soma {
+@Path("/subtracao/{op}/{ob}")
+public class Subtracao {
 
     @GET
-    public double calculaRaiz(@PathParam String op, @PathParam String ob) {
-        float operacao = (Float.parseFloat(op) + Float.parseFloat(ob));
+    public double calculaSubtracao(@PathParam String op, @PathParam String ob) {
+        float operacao = (Float.parseFloat(op) - Float.parseFloat(ob));
         
         try {
           return operacao;
