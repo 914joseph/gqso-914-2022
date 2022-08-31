@@ -1,31 +1,34 @@
 package com.danielfireman.ifal.calcapi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+//import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import io.jooby.MockRouter;
+//import io.jooby.MockRouter;
 import io.jooby.StatusCode;
-import io.jooby.exception.BadRequestException;
+//import io.jooby.exception.BadRequestException;
+
+import java.io.IOException;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.OkHttpClient;
+//import io.jooby.JoobyTest; 
 
 public class MultiplicacaoTest {
 
-  @Test
-  public void multiplicacao() {
-    MockRouter router = new MockRouter(new App());
-    router.get("/multiplicacao/9/1", rsp -> {
-      assertEquals(9.0, rsp.value());
-      assertEquals(StatusCode.OK, rsp.getStatusCode());
-    });
-  }
+  static OkHttpClient client = new OkHttpClient();
 
   @Test
-  public void multiplicacao_opString() {
-    MockRouter router = new MockRouter(new App());
-    assertThrows(BadRequestException.class,
-    ()->{
-      router.get("/multiplicacao/aa", rsp -> {});
-    });
+  public void multiplicacao (int serverPort) throws IOException {
+    Request req = new Request.Builder()
+      .url("http://localhost:" + serverPort + "/multiplicacao/5/5")
+      .build();
+
+    try (Response rsp = client.newCall(req).execute()) {
+      assertEquals("25.0", rsp.body().string());
+      assertEquals(StatusCode.OK.value(), rsp.code());
+    }
   }
 }
+
