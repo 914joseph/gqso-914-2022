@@ -9,23 +9,23 @@ import io.jooby.MockRouter;
 import io.jooby.StatusCode;
 import io.jooby.exception.BadRequestException;
 
-public class SomaTest {
+public class SubtracaoTest {
 
   @Test
-  public void soma() {
+  public void subtracao() {
     MockRouter router = new MockRouter(new App());
-    router.get("/soma/9/1", rsp -> {
-      assertEquals(10.0, rsp.value());
+    router.get("/subtracao/9/1", rsp -> {
+      assertEquals(8.0, rsp.value());
       assertEquals(StatusCode.OK, rsp.getStatusCode());
     });
   }
 
   @Test
-  public void soma_opString() {
+  public void subtracao_opString() {
     MockRouter router = new MockRouter(new App());
     assertThrows(BadRequestException.class,
     ()->{
-      router.get("/soma/aa", rsp -> {});
+      router.get("/subtracao/aa", rsp -> {});
     });
   }
 }
