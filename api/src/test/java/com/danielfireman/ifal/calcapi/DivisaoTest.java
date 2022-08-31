@@ -12,6 +12,13 @@ import io.jooby.exception.BadRequestException;
 public class DivisaoTest {
 
   @Test
+  public void calculaDivisao() {
+    Divisao divisao = new Divisao();
+    assertEquals(5.0, divisao.calculaDivisao("10", "2"));
+  }
+
+
+  @Test
   public void divisao() {
     MockRouter router = new MockRouter(new App());
     router.get("/divisao/9/3", rsp -> {
@@ -23,9 +30,9 @@ public class DivisaoTest {
   @Test
   public void divisao_opString() {
     MockRouter router = new MockRouter(new App());
-    assertThrows(BadRequestException.class,
+    assertThrows(NumberFormatException.class,
     ()->{
-      router.get("/divisao/10/abc", rsp -> {});
+      router.get("/divisao/ab/10", rsp -> {});
     });
   }
 }
