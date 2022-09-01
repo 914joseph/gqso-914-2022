@@ -1,28 +1,37 @@
 package com.danielfireman.ifal.calcapi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+
+import io.jooby.MockRouter;
 import io.jooby.StatusCode;
-import java.io.IOException;
+import io.jooby.exception.BadRequestException;
 
 public class SubtracaoTest {
 
-
-  static OkHttpClient client = new OkHttpClient();
+  @Test
+  public void calculaSubtracao(){
+    Subtracao subtracao = new Subtracao();
+    assertEquals(10.0, subtracao.calculaSubtracao("20","10"));
+  }
 
   @Test
-  public void subtrair(int serverPort) throws IOException {
-    Request requeste = new Request.Builder()
-    .url("http://localhost:" + serverPort + "/subtracao/20/10")
-    .build();
+  public void subtracao() {
+    MockRouter router = new MockRouter(new App());
+    router.get("/subtracao/9/1", rsp -> {
+      assertEquals(8.0, rsp.value());
+      assertEquals(StatusCode.OK, rsp.getStatusCode());
+    });
+  }
 
-    try (Response response = client.newCall(requeste).execute()) {
-      assertEquals("10.0", response.body().string());
-      assertEquals(StatusCode.OK.value(), response.code());
-    }
+  @Test
+  public void subtracao_opString() {
+    MockRouter router = new MockRouter(new App());
+    assertThrows(NumberFormatException.class,
+    ()->{
+      router.get("/subtracao/aa", rsp -> {});
+    });
   }
 }
