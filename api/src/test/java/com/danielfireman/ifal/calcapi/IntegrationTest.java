@@ -19,12 +19,22 @@ public class IntegrationTest {
   @Test
   public void shouldSayHi(int serverPort) throws IOException {
     Request req = new Request.Builder()
-        .url("http://localhost:" + serverPort)
+        .url("http://localhost:" + serverPort + "/multiplicacao/5/5")
         .build();
 
     try (Response rsp = client.newCall(req).execute()) {
-      assertEquals("Bem-vindo(a) a API calculadora!", rsp.body().string());
+      assertEquals("25", rsp.body().string());
       assertEquals(StatusCode.OK.value(), rsp.code());
+    }
+  }
+
+  public void multiplicacao_erro(int serverPort) throws IOException {
+    Request req = new Request.Builder()
+    .url("http://localhost:" + serverPort + "/multiplicacao/ttt/3")
+    .build();
+
+    try (Response rsp = client.newCall(req).execute()) {
+      assertEquals(StatusCode.BAD_REQUEST.value(), rsp.code());
     }
   }
 }
