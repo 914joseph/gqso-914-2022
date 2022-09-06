@@ -31,7 +31,7 @@ public class SubtracaoTest {
     MockRouter router = new MockRouter(new App());
     assertThrows(NumberFormatException.class,
     ()->{
-      router.get("/subtracao/aa", rsp -> {});
+      router.get("/subtracao/aa/12", rsp -> {});
     });
   }
 }
