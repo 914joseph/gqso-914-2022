@@ -6,28 +6,28 @@ import io.jooby.StatusCode;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import io.jooby.MockRouter;
 
-public class MultiplicacaoTest {
+public class SomaTest {
 
-  public void calculaMultiplicacao () {
-    Multiplicacao multiplicacao = new Multiplicacao();
-    assertEquals(20, multiplicacao.calculaMultiplicacao("10", "2"));
+  public void calculaSoma () {
+    Soma soma = new Soma();
+    assertEquals(12, soma.calculaSoma("10", "2"));
   }
 
   @Test
-  public void multiplicacao () {
+  public void soma () {
     MockRouter router = new MockRouter(new App());
-    router.get("/multiplicacao/9/1", rsp -> {
-      assertEquals(9.0, rsp.value());
+    router.get("/soma/9/1", rsp -> {
+      assertEquals(10.0, rsp.value());
       assertEquals(StatusCode.OK, rsp.getStatusCode());
     });
   }
 
   @Test
-  public void multiplicacao_opString() {
+  public void soma_opString() {
     MockRouter router = new MockRouter(new App());
     assertThrows(NumberFormatException.class,
     ()->{
-      router.get("/multiplicacao/aa/13", rsp -> {});
+      router.get("/soma/aa/13", rsp -> {});
     });
   }
 
