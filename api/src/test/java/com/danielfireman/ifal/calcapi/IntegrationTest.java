@@ -19,18 +19,18 @@ public class IntegrationTest {
   @Test
   public void shouldSayHi(int serverPort) throws IOException {
     Request req = new Request.Builder()
-        .url("http://localhost:" + serverPort + "/multiplicacao/5/5")
+        .url("http://localhost:" + serverPort + "/soma/5/5")
         .build();
 
     try (Response rsp = client.newCall(req).execute()) {
-      assertEquals("25", rsp.body().string());
+      assertEquals("10", rsp.body().string());
       assertEquals(StatusCode.OK.value(), rsp.code());
     }
   }
 
-  public void multiplicacao_erro(int serverPort) throws IOException {
+  public void soma_erro(int serverPort) throws IOException {
     Request req = new Request.Builder()
-    .url("http://localhost:" + serverPort + "/multiplicacao/ttt/3")
+    .url("http://localhost:" + serverPort + "/soma/ttt/3")
     .build();
 
     try (Response rsp = client.newCall(req).execute()) {
