@@ -19,21 +19,21 @@ public class IntegrationTest {
   @Test
   public void shouldSayHi(int serverPort) throws IOException {
     Request req = new Request.Builder()
-        .url("http://localhost:" + serverPort + "/subtracao/20/10")
+        .url("http://localhost:" + serverPort + "/multiplicacao/5/5")
         .build();
 
     try (Response rsp = client.newCall(req).execute()) {
-      assertEquals("10.0",rsp.body().string());
+      assertEquals("25", rsp.body().string());
       assertEquals(StatusCode.OK.value(), rsp.code());
     }
   }
-  @Test
-  public void subtracao_erro(int serverPort) throws IOException{
-    Request req =new Request.Builder()
-    .url("http://localhost:" + serverPort + "/subtracao/bbb/3")
+
+  public void multiplicacao_erro(int serverPort) throws IOException {
+    Request req = new Request.Builder()
+    .url("http://localhost:" + serverPort + "/multiplicacao/ttt/3")
     .build();
 
-    try (Response rsp = client.newCall(req).execute()){
+    try (Response rsp = client.newCall(req).execute()) {
       assertEquals(StatusCode.BAD_REQUEST.value(), rsp.code());
     }
   }
