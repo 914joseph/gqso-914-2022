@@ -23,7 +23,7 @@ public class IntegrationTest {
         .build();
 
     try (Response rsp = client.newCall(req).execute()) {
-      assertEquals("25", rsp.body().string());
+      assertEquals("25.0", rsp.body().string());
       assertEquals(StatusCode.OK.value(), rsp.code());
     }
   }
